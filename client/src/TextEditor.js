@@ -51,7 +51,7 @@ export default function TextEditor() {
       const token = localStorage.getItem('token');
       if (!token) { navigate('/login'); return; }
       try {
-        const res = await axios.get('http://localhost:5000/api/auth/me', {
+        const res = await axios.get('https://nexusnote-backend.onrender.com/api/auth/me', {
           headers: { 'x-auth-token': token }
         });
         setCurrentUser(res.data);
@@ -63,7 +63,7 @@ export default function TextEditor() {
   // 2. Connect Socket
   useEffect(() => {
     if (!currentUser) return;
-    const s = io("http://localhost:5000");
+    const s = io("https://nexusnote-backend.onrender.com");
     setSocket(s);
     return () => s.disconnect();
   }, [currentUser]);
@@ -218,7 +218,7 @@ export default function TextEditor() {
       const context = type === 'complete' ? allText.slice(-100) : "";
       const textToSend = selectedText || allText;
 
-      const res = await axios.post("http://localhost:5000/api/ai/generate", { 
+      const res = await axios.post("https://nexusnote-backend.onrender.com/api/ai/generate", { 
         text: textToSend, 
         context, 
         type 

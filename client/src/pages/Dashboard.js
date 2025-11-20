@@ -17,7 +17,7 @@ export default function Dashboard() {
         return;
       }
       try {
-        const res = await axios.get('http://localhost:5000/api/documents', {
+        const res = await axios.get('https://nexusnote-backend.onrender.com/api/documents', {
           headers: { 'x-auth-token': token }
         });
         setDocs(res.data);
@@ -32,7 +32,7 @@ export default function Dashboard() {
   const createDoc = async () => {
     const token = localStorage.getItem('token');
     try {
-      const res = await axios.post('http://localhost:5000/api/documents', 
+      const res = await axios.post('https://nexusnote-backend.onrender.com/api/documents', 
         { title: 'Untitled Document' },
         { headers: { 'x-auth-token': token } }
       );
@@ -49,7 +49,7 @@ export default function Dashboard() {
     
     const token = localStorage.getItem('token');
     try {
-      await axios.delete(`http://localhost:5000/api/documents/${id}`, {
+      await axios.delete(`https://nexusnote-backend.onrender.com/api/documents/${id}`, {
         headers: { 'x-auth-token': token }
       });
       setDocs(docs.filter(d => d._id !== id));
