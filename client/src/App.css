@@ -1,0 +1,133 @@
+/* client/src/App.css */
+
+.container {
+  display: flex;
+  height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa;
+}
+
+.editor-container {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  position: relative; /* Needed for cursors */
+}
+
+.sidebar {
+  width: 300px;
+  background: #ffffff;
+  padding: 20px;
+  border-left: 1px solid #e0e0e0;
+  overflow-y: auto;
+  box-shadow: -2px 0 5px rgba(0,0,0,0.05);
+}
+
+/* Quill Editor Overrides */
+.ql-container.ql-snow {
+  border: none;
+  height: 100%;
+  background: white;
+  font-size: 16px;
+}
+
+.ql-toolbar.ql-snow {
+  background: #f1f3f4;
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 12px;
+}
+
+/* Buttons */
+.btn-ai {
+  margin: 5px 0;
+  padding: 10px 15px;
+  width: 30%;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.1s, opacity 0.2s;
+  background: #6200ea; /* Default Purple */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-ai:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.btn-ai:disabled {
+  background: #ccc !important;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.auth-box {
+  max-width: 400px;
+  margin: 80px auto;
+  padding: 40px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+/* REAL-TIME COLLABORATION CURSORS*/
+
+/* 1. The Main Cursor Container */
+.ql-cursor {
+  position: absolute;
+  z-index: 1000;
+}
+
+/* 2. The Vertical Blinking Bar (Caret) */
+.ql-cursor-caret {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background-color: inherit; /* Inherits the user's assigned color */
+}
+
+/* 3. The Name Tag (Flag) */
+.ql-cursor-flag {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  white-space: nowrap;
+  background-color: inherit; /* Inherits the user's assigned color */
+  color: rgb(208, 25, 25);
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 4px 4px 4px 0; /* Rounded corners except bottom-left */
+  pointer-events: none; /* Clicks pass through */
+  user-select: none;
+  display: block !important; /* Force visibility */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* 4. The Selection Highlight (Background Color) */
+.ql-cursor-selection-block {
+  position: absolute;
+  background-color: inherit; /* Inherits the user's assigned color */
+  opacity: 0.3; /* Make it semi-transparent so text is readable */
+  pointer-events: none;
+}
