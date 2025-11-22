@@ -8,6 +8,13 @@ The application is built using the MERN stack (MongoDB, Express, React, Node.js)
 <br> 
 Deployment Link - https://nexusnote-frontend.onrender.com
 
+<br>
+Demo- 
+
+https://github.com/user-attachments/assets/b0b045c5-0631-40d9-9dc4-edc808960d7d
+
+
+
 ## Features
 
 ### Core Functionality
